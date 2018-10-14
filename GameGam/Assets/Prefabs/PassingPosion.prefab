@@ -36,7 +36,7 @@ Transform:
   m_GameObject: {fileID: 1600689656998176}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.38, y: 0.88, z: -7.455}
-  m_LocalScale: {x: 0.022321153, y: 0.022321153, z: 0.022321153}
+  m_LocalScale: {x: 0.11377538, y: 0.11377538, z: 0.11377538}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -605,7 +605,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 11460
+    maxNumParticles: 12314
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -684,7 +684,7 @@ ParticleSystem:
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
     alignToDirection: 0
-    m_Texture: {fileID: 2800000, guid: 7eea7c5edf1408548af60a404c111862, type: 3}
+    m_Texture: {fileID: 2800000, guid: b2bf64fa302a1eb4d8b2e874d7459cfc, type: 3}
     m_TextureClipChannel: 3
     m_TextureClipThreshold: 0
     m_TextureUVChannel: 0
@@ -814,7 +814,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 956.2
+      scalar: 102.2
       minScalar: 10
       maxCurve:
         serializedVersion: 2
