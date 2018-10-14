@@ -13,7 +13,8 @@ public class PlayerCtrl : MonoBehaviour {
     private bool IsBraking = false;
 
     void Start () {
-	}
+        Input.gyro.enabled = true;
+    }
 	
 	void Update () {
 
