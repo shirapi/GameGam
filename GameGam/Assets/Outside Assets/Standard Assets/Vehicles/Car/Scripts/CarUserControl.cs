@@ -4,13 +4,15 @@ using UnityStandardAssets.CrossPlatformInput;
 
 namespace UnityStandardAssets.Vehicles.Car
 {
-    [RequireComponent(typeof (CarController))]
-    public class CarUserControl : MonoBehaviour
+    [RequireComponent(typeof(CarController))]
+    public class CarUserControl : TargetScript
     {
         private CarController m_Car; // the car controller we want to use
         private bool IsBraking = false;
         private float handle = 0.0f;
+        [SerializeField] private float force;
 
+        Rigidbody rig;
         private void Awake()
         {
             // get the car controller
@@ -18,6 +20,10 @@ namespace UnityStandardAssets.Vehicles.Car
             Input.gyro.enabled = true;
         }
 
+        void Start()
+        {
+            rig = this.GetComponent<Rigidbody>();
+        }
 
         private void FixedUpdate()
         {
@@ -27,19 +33,19 @@ namespace UnityStandardAssets.Vehicles.Car
             float footbrake = 0.0f;
             float handbrake = 0.0f;
             float v = 1.0f;
-            if (this.IsBraking)
-            {
-                //footbrake = 1.0f;
-                handbrake = 1.0f;
-                v = 0.1f;
-            }
 
             Quaternion gy = Input.gyro.attitude;
             handle = -(new Quaternion(-gy.x, -gy.z, -gy.y, gy.w)
                 * Quaternion.Euler(90f, 0f, 0f)).ToEulerAngles().z
                 * 0.2f;
-            //handle = Input.gyro.rotationRate.z;
-            Debug.Log(handle);
+
+            if (this.IsBraking)
+            {
+                //footbrake = 1.0f;
+                handbrake = 1.0f;
+                v = -1.0f;
+            }
+
 
             m_Car.Move(handle, v, footbrake, handbrake);
         }
@@ -51,6 +57,11 @@ namespace UnityStandardAssets.Vehicles.Car
         public void ReleaseTheBrake()
         {
             IsBraking = false;
+        }
+
+        public override void Action()
+        {
+            rig.AddForce(force * this.transform.forward);
         }
     }
 }
